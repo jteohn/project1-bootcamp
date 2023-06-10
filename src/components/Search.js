@@ -25,20 +25,3 @@ export default Search;
 
 // capture value that user has keyed in
 // only display notes that has the value the user keys in
-
-//----
-
-//     return (
-//       <div>
-//         <h1 className="page-title">notes.</h1>
-//         <br />
-//         <div className="search-bar">
-//           <form>
-//             <input
-//               type="search"
-//               placeholder="type to search"
-//               className="search-field"
-//             />
-//             <button type="submit" class="search-button">
-//               {searchIcon}
-//             </button>

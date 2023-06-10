@@ -4,7 +4,8 @@ import AddNote from "./AddNote";
 
 class NoteList extends React.Component {
   render() {
-    const { notes, handleAddNote, handleDeleteNote } = this.props;
+    const { notes, handleAddNote, handleDeleteNote, handleEditNote } =
+      this.props;
     return (
       <div className="notes-list">
         {/* google .map() method */}
@@ -15,6 +16,7 @@ class NoteList extends React.Component {
             text={note.text}
             date={note.date}
             handleDeleteNote={handleDeleteNote}
+            handleEditNote={handleEditNote}
           />
         ))}
         <AddNote handleAddNote={handleAddNote} />

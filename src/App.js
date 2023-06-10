@@ -63,6 +63,27 @@ class App extends React.Component {
     });
   };
 
+  editNote = (id, updatedTitle, updatedText) => {
+    // pass a parameter in seState to ensure that the most up-to-date..
+    this.setState((prevState) => {
+      // .map() to create a new array w/o modifying the original array
+      const updatedNotes = prevState.notes.map((note) => {
+        if (note.id === id) {
+          return {
+            // use spread operator to preserve existing properties of the 'note' object while updating the title & text properties with the new values.
+            ...note,
+            title: updatedTitle,
+            text: updatedText,
+          };
+        }
+        return note;
+      });
+      return {
+        notes: updatedNotes,
+      };
+    });
+  };
+
   handleSearch = (searchText) => {
     this.setState({
       search: searchText,
@@ -85,6 +106,7 @@ class App extends React.Component {
             )}
             handleAddNote={this.addNote}
             handleDeleteNote={this.deleteNote}
+            handleEditNote={this.editNote}
           />
         </header>
       </div>
