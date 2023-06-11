@@ -1,5 +1,7 @@
 import React from "react";
 import trash from "../assets/trash.png";
+import expand from "../assets/expand.png";
+import collapse from "../assets/collapse.png";
 
 class Note extends React.Component {
   constructor(props) {
@@ -45,13 +47,42 @@ class Note extends React.Component {
   };
 
   render() {
-    const { id, title, text, date, handleDeleteNote } = this.props;
+    const {
+      id,
+      title,
+      text,
+      date,
+      handleDeleteNote,
+      expanded,
+      handleExpandNote,
+    } = this.props;
 
     const { isEditing, updatedTitle, updatedText } = this.state;
 
+    const expandIcon = (
+      <img
+        className="expand-icon"
+        src={expand}
+        alt="expand-icon"
+        height="15px"
+        onClick={() => handleExpandNote(id)}
+      />
+    );
+    const collapseIcon = (
+      <img
+        className="collapse-icon"
+        src={collapse}
+        alt="collapse-icon"
+        height="15px"
+        onClick={() => handleExpandNote(id)}
+      />
+    );
+
+    const mainClassName = `note ${expanded ? "expanded" : ""}`;
+
     return (
-      <div className="note">
-        {/* Title */}
+      <div className={mainClassName}>
+        {/* NOTE Title */}
         {isEditing ? (
           <input
             className="note-title noteTitle-content"
@@ -62,7 +93,7 @@ class Note extends React.Component {
         ) : (
           <span className="note-title noteTitle-content">{title}</span>
         )}
-        {/* TEXT */}
+        {/* NOTE TEXT */}
         {isEditing ? (
           <textarea
             className="update-textField"
@@ -76,11 +107,11 @@ class Note extends React.Component {
         <div className="note-footer">
           <small>{date}</small>
           {isEditing ? (
-            <button className="edit-note" onClick={this.handleSaveEdits}>
+            <button className="edit-note-button" onClick={this.handleSaveEdits}>
               save
             </button>
           ) : (
-            <button className="edit-note" onClick={this.isEditMode}>
+            <button className="edit-note-button" onClick={this.isEditMode}>
               edit
             </button>
           )}
@@ -91,6 +122,7 @@ class Note extends React.Component {
             height="25px"
             onClick={() => handleDeleteNote(id)}
           />
+          {expanded ? collapseIcon : expandIcon}
         </div>
       </div>
     );

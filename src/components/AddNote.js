@@ -62,7 +62,7 @@ class AddNote extends React.Component {
           onChange={this.handleTextChange}
         ></textarea>
         <div className="note-footer">
-          <button className="save-note" onClick={this.handleSaveNote}>
+          <button className="save-newNote-button" onClick={this.handleSaveNote}>
             save
           </button>
         </div>

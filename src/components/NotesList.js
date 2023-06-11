@@ -3,20 +3,35 @@ import Note from "./Note";
 import AddNote from "./AddNote";
 
 class NoteList extends React.Component {
+  // handleExpandNote = (id) => {
+  //   const { handleToggleExpansion } = this.props;
+  //   handleToggleExpansion(id);
+  //   console.log(`expand: ${this.handleExpandNote}`);
+  // };
+
   render() {
-    const { notes, handleAddNote, handleDeleteNote, handleEditNote } =
-      this.props;
+    const {
+      notes,
+      handleAddNote,
+      handleDeleteNote,
+      handleEditNote,
+      handleToggleExpansion,
+    } = this.props;
+
     return (
       <div className="notes-list">
         {/* google .map() method */}
         {notes.map((note) => (
           <Note
+            key={note.id}
             id={note.id}
             title={note.title}
             text={note.text}
             date={note.date}
+            expanded={note.expanded}
             handleDeleteNote={handleDeleteNote}
             handleEditNote={handleEditNote}
+            handleExpandNote={handleToggleExpansion}
           />
         ))}
         <AddNote handleAddNote={handleAddNote} />

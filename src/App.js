@@ -8,26 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: [
-        {
-          id: nanoid(),
-          title: "I am title",
-          text: "I am description (1)",
-          date: "08/06/2023",
-        },
-        {
-          id: nanoid(),
-          title: "I am title",
-          text: "I am description (2)",
-          date: "10/06/2023",
-        },
-        {
-          id: nanoid(),
-          title: "I am title",
-          text: "I am description (3)",
-          date: "15/06/2023",
-        },
-      ],
+      notes: [],
       search: "",
     };
   }
@@ -41,6 +22,7 @@ class App extends React.Component {
       title: noteTitle,
       text: noteText,
       date: date.toLocaleDateString(),
+      expanded: false,
     };
 
     // use spread operator as we do not want to mutate our this.state.note
@@ -84,6 +66,23 @@ class App extends React.Component {
     });
   };
 
+  toggleNoteExpansion = (id) => {
+    this.setState((prevState) => {
+      const expandedNote = prevState.notes.map((note) => {
+        if (note.id === id) {
+          return {
+            ...note,
+            expanded: !note.expanded,
+          };
+        }
+        return note;
+      });
+      return {
+        notes: expandedNote,
+      };
+    });
+  };
+
   handleSearch = (searchText) => {
     this.setState({
       search: searchText,
@@ -107,6 +106,7 @@ class App extends React.Component {
             handleAddNote={this.addNote}
             handleDeleteNote={this.deleteNote}
             handleEditNote={this.editNote}
+            handleToggleExpansion={this.toggleNoteExpansion}
           />
         </header>
       </div>
