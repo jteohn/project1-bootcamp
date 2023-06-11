@@ -66,6 +66,23 @@ class App extends React.Component {
     });
   };
 
+  // // Enabling Local Storage
+  // componentDidMount() {
+  //   //retrieve "notes" with getItem from json data
+  //   const currentNotesData = localStorage.getItem("notes");
+  //   // convert json data to object
+  //   const currentNotes = JSON.parse(currentNotesData);
+  //   this.setState({
+  //     notes: currentNotes,
+  //   });
+  // }
+
+  // //use setter method here to pass the updated notes to store in local storage as json data
+  // componentDidUpdate(prevProps, prevState) {
+  //   const updatedNotesData = JSON.stringify(this.state.notes);
+  //   localStorage.setItem("notes", updatedNotesData);
+  // }
+
   toggleNoteExpansion = (id) => {
     this.setState((prevState) => {
       const expandedNote = prevState.notes.map((note) => {
