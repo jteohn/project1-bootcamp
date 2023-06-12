@@ -77,29 +77,33 @@ class Login extends React.Component {
               back to previous page
             </button>
             <h1 className="login-title">Log in to notes</h1>
-            <label>
-              Username:
-              <input
-                type="text"
-                value={username}
-                name="username"
-                placeholder="username"
-                onChange={(event) => this.handleInputChange(event)}
-              />
-            </label>
+            <div>
+              <label className="login-labels">
+                Username:
+                <input
+                  type="text"
+                  value={username}
+                  className="login-input-field"
+                  name="username"
+                  onChange={(event) => this.handleInputChange(event)}
+                />
+              </label>
+              <br />
+              <label className="login-labels">
+                Password :
+                <input
+                  type="text"
+                  value={password}
+                  className="login-input-field"
+                  name="password"
+                  onChange={(event) => this.handleInputChange(event)}
+                />
+              </label>
+            </div>
 
-            <label>
-              Password:
-              <input
-                type="text"
-                value={password}
-                name="password"
-                placeholder="password"
-                onChange={(event) => this.handleInputChange(event)}
-              />
-            </label>
-
-            <button type="submit">log in</button>
+            <button className="login-submit-button" type="submit">
+              log in
+            </button>
           </form>
         </div>
       </div>
