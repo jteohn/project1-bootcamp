@@ -3,12 +3,6 @@ import Note from "./Note";
 import AddNote from "./AddNote";
 
 class NoteList extends React.Component {
-  // handleExpandNote = (id) => {
-  //   const { handleToggleExpansion } = this.props;
-  //   handleToggleExpansion(id);
-  //   console.log(`expand: ${this.handleExpandNote}`);
-  // };
-
   render() {
     const {
       notes,

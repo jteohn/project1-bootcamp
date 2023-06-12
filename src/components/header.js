@@ -5,7 +5,6 @@ class Header extends React.Component {
     return (
       <div className="header">
         <h1 className="header-title">notes.</h1>
-        {/* i can add navbar here */}
       </div>
     );
   }

@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/* ============== PAGE STYLING ============== */
+/* ============== OVERALL PAGE STYLING ============== */
 
 .header {
   display: flex;
@@ -29,7 +29,86 @@ code {
   padding-left: 15px;
 }
 
+/* ============== LANDING PAGE ============== */
+
+.landing-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing-title {
+  font-size: 10vw;
+  font-family: "Abhaya Libre ExtraBold";
+  letter-spacing: 0.18rem;
+  opacity: 0.8;
+  align-items: center;
+  margin-top: 12rem;
+  text-shadow: white -6px 5px;
+  margin-bottom: -0.5vw;
+}
+
+.landing-login-button {
+  background-color: #faedcd;
+  color: #5b5959;
+  border-radius: 50px;
+  width: 9vw;
+  height: 4vw;
+  border: none;
+  font-family: "Abhaya Libre ExtraBold";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  letter-spacing: 0.01rem;
+}
+
+.landing-login-button:hover {
+  background-color: #fae29f;
+  cursor: pointer;
+}
+
+.landing-guest-button {
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: "Abhaya Libre ExtraBold";
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2vw;
+}
+
+.landing-guest-button:hover {
+  color: #fae29f;
+}
+
+@media screen and (max-width: 1000px) {
+  .landing-title {
+    font-size: 20vw;
+    margin-top: 10rem;
+    text-shadow: white -0.6vw 0.7vw;
+  }
+
+  .landing-login-button {
+    margin-top: 0.8vw;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .landing-login-button {
+    width: 7vw;
+    height: 3vw;
+    font-size: 1.5vw;
+  }
+  .landing-guest-button {
+    font-size: 1.5vw;
+  }
+}
+
 /* ============== PAGE HEADER [TITLE + SEARCH BAR] ============== */
+
 .header-title {
   font-size: 11vh;
   font-family: "Abhaya Libre ExtraBold";
@@ -87,29 +166,7 @@ code {
   overflow: hidden;
 }
 
-/* --------- for smaller screen sizes --------- */
-@media screen and (max-width: 600px) {
-  .notes-list {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 500px));
-  }
-
-  .note {
-    min-width: 120px;
-  }
-}
-
-/* --------- for bigger screen sizes --------- */
-@media screen and (min-width: 1200px) {
-  .notes-list {
-    grid-template-columns: repeat(auto-fit, minmax(500px, 500px));
-  }
-
-  .note {
-    min-width: 240px;
-  }
-}
-
-/* --------- note title --------- */
+/* --------- [DISPLAY NOTES] Note Title --------- */
 .noteTitle-content {
   overflow: auto;
   max-height: 48px;
@@ -122,8 +179,8 @@ code {
   overflow-wrap: break-word;
 }
 
-/* --------- note content --------- */
-.note-content {
+/* --------- [DISPLAY NOTES] Note Text --------- */
+.noteText-content {
   overflow: auto;
   max-height: 240px;
 }
@@ -136,30 +193,22 @@ code {
   margin-bottom: auto;
 }
 
-/* --------- note footer --------- */
+/* --------- [DISPLAY NOTES] Note Footer --------- */
 .note-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* ============== PAGE CONTENT [EDIT NOTE] ============== */
-
-.update-textField {
-  background: #ffffff;
-  opacity: 0.7;
-  /* margin-top: 1rem;
-  margin-bottom: auto;
-  height: 6rem; */
-}
-
 /* ============== PAGE CONTENT [ADD NEW NOTE] ============== */
 .note.new {
   background-color: #baaaaa;
-  max-width: 300px;
+  min-height: 170px;
+  /* min-width: 150px */
+  /* to include @media */
 }
 
-/* --------- style note title --------- */
+/* --------- [ADD NEW NOTE] Note Title --------- */
 .new-note-title {
   font-size: 1.2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -168,8 +217,8 @@ code {
   font-weight: bold;
 }
 
-/* --------- style note text --------- */
-textarea {
+/* --------- [ADD NEW NOTE] Note Text --------- */
+textarea.add-note {
   background-color: #baaaaa;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -180,10 +229,11 @@ textarea {
   border-radius: 10px;
 }
 
-textarea:focus {
+textarea.add-note:focus {
   outline: none;
 }
 
+/* --------- [ADD NEW NOTE] Save Button --------- */
 .save-newNote-button {
   background-color: #ffffff;
   color: #383636;
@@ -195,6 +245,75 @@ textarea:focus {
 .save-newNote-button:hover {
   background-color: #faedcd;
   cursor: pointer;
+}
+
+/* ============== PAGE RESPONSIVENESS [SMALLER SCREEN] ============== */
+@media screen and (max-width: 600px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 500px));
+  }
+
+  .note {
+    min-width: 150px;
+  }
+
+  .note.new {
+    min-width: 150px;
+  }
+}
+
+/* ============== PAGE RESPONSIVENESS [BIGGER SCREEN] ============== */
+@media screen and (min-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 340px));
+  }
+
+  .note {
+    min-width: 240px;
+  }
+
+  .note.new {
+    min-width: 240px;
+  }
+}
+
+/* ============== PAGE CONTENT [EDIT NOTE] ============== */
+
+/* .update-textField {
+  background: #ffffff;
+  opacity: 0.7;
+  margin-top: 1rem;
+  margin-bottom: auto;
+  height: 6rem;
+} */
+
+/* NEED TO FIX THISSSS!!!! ADD @MEDIA */
+.edit-note-title {
+  font-size: 1.2rem;
+  color: #000000;
+  font-weight: bold;
+  border: none;
+  background-color: #ffffff;
+  outline: none;
+  overflow: scroll;
+}
+
+textarea.edit-note {
+  background-color: transparent;
+  color: #000000;
+  font-size: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  border: 3px inset #baaaaa;
+  resize: none;
+  margin-bottom: auto;
+  margin-top: 15px;
+  min-height: 10vh;
+}
+
+textarea.edit-note:focus {
+  outline: none;
 }
 
 /* ============== PAGE CONTENT [NOTE FOOTER] ============== */
@@ -237,8 +356,10 @@ textarea:focus {
   left: 0;
   z-index: 1;
   background-color: #d6ccc2;
+  border: 10px outset #baaaaa;
   opacity: 1;
   padding: 50px;
-  margin: 0 auto;
+  margin: 30px;
+  /* margin: 0 auto; */
   overflow: auto;
 }

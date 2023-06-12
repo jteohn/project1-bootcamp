@@ -82,10 +82,10 @@ class Note extends React.Component {
 
     return (
       <div className={mainClassName}>
-        {/* NOTE Title */}
+        {/* NOTE TITLE */}
         {isEditing ? (
           <input
-            className="note-title noteTitle-content"
+            className="edit-note-title edit-note"
             type="text"
             value={updatedTitle}
             onChange={this.handleEditTitle}
@@ -96,12 +96,12 @@ class Note extends React.Component {
         {/* NOTE TEXT */}
         {isEditing ? (
           <textarea
-            className="update-textField"
+            className="edit-note-text edit-note"
             value={updatedText}
             onChange={this.handleEditText}
           />
         ) : (
-          <span className="note-description note-content">{text}</span>
+          <span className="note-description noteText-content">{text}</span>
         )}
         {/* NOTE FOOTER */}
         <div className="note-footer">

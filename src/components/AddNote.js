@@ -47,7 +47,7 @@ class AddNote extends React.Component {
       // put a spacing between "note" & "new" so that we can reuse the CSS styling from note.js!!
       <div className="note new">
         <textarea
-          className="new-note-title"
+          className="new-note-title add-note"
           rows="1"
           cols="10"
           placeholder="Title"
@@ -55,6 +55,7 @@ class AddNote extends React.Component {
           onChange={this.handleTitleChange}
         ></textarea>
         <textarea
+          className="add-note"
           rows="8"
           cols="10"
           placeholder="type your note here..."
