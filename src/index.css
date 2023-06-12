@@ -107,6 +107,76 @@ code {
   }
 }
 
+/* ============== LOG IN PAGE ============== */
+.login-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-back-button {
+  border: none;
+  align-self: start;
+  margin-left: 5vw;
+  margin-top: 1vw;
+  color: #baaaaa;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.login-title {
+  font-size: 6vw;
+  font-family: "Abhaya Libre ExtraBold";
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20vw;
+  background-color: #fffaf5c5;
+  width: 50vw;
+  border-radius: 40px;
+  padding-bottom: 2vw;
+}
+
+@media screen and (max-width: 500px) {
+  .login-form {
+    margin-top: 20vw;
+    width: 70vw;
+  }
+  .login-title {
+    font-size: 5vw;
+    font-family: "Abhaya Libre ExtraBold";
+    align-items: center;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+  .login-form {
+    margin-top: 20vw;
+    width: 50vw;
+  }
+  .login-title {
+    font-size: 5vw;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .login-form {
+    margin-top: 10vw;
+    width: 50vw;
+    padding-bottom: 1vw;
+  }
+  .login-title {
+    font-size: 3vw;
+  }
+}
+
 /* ============== PAGE HEADER [TITLE + SEARCH BAR] ============== */
 
 .header-title {

@@ -1,5 +1,4 @@
 import React from "react";
-import Home from "./Home";
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,15 +9,8 @@ class Login extends React.Component {
       password: "",
       // utilising hash map object to store key-value pairs. key ==> user, value ==> user's notes.
       currentUsers: [],
-      currentPage: "login",
     };
   }
-
-  handlePage = (page) => {
-    this.setState({
-      currentPage: page,
-    });
-  };
 
   // at first instance, when browser loads + after user tried logging in.
   componentDidMount() {
@@ -68,48 +60,48 @@ class Login extends React.Component {
       username: "",
       password: "",
       currentUsers: newUser,
-      currentPage: "home",
     });
+    this.props.handlePageChange("home");
   };
 
   render() {
-    const { username, password, currentPage } = this.state;
-
-    let pageNavigation;
-    if (currentPage === "home") {
-      pageNavigation = <Home />;
-    }
-
+    const { username, password } = this.state;
     return (
       <div>
-        {pageNavigation}
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          <label>
-            Username:
-            <input
-              type="text"
-              value={username}
-              name="username"
-              placeholder="username"
-              onChange={(event) => this.handleInputChange(event)}
-            />
-          </label>
+        <div className="login-page">
+          <form className="login-form" onSubmit={this.handleSubmit}>
+            <button
+              className="login-back-button"
+              onClick={() => this.props.goBackLandingPage()}
+            >
+              back to previous page
+            </button>
+            <h1 className="login-title">Log in to notes</h1>
+            <label>
+              Username:
+              <input
+                type="text"
+                value={username}
+                name="username"
+                placeholder="username"
+                onChange={(event) => this.handleInputChange(event)}
+              />
+            </label>
 
-          <label>
-            Password:
-            <input
-              type="text"
-              value={password}
-              name="password"
-              placeholder="password"
-              onChange={(event) => this.handleInputChange(event)}
-            />
-          </label>
+            <label>
+              Password:
+              <input
+                type="text"
+                value={password}
+                name="password"
+                placeholder="password"
+                onChange={(event) => this.handleInputChange(event)}
+              />
+            </label>
 
-          <button type="submit">Login</button>
-        </form>
-        <p>Create an account</p>
-        <p>Forget password</p>
+            <button type="submit">log in</button>
+          </form>
+        </div>
       </div>
     );
   }
