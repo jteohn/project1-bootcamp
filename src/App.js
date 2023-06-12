@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import LandingHeader from "./pages/Landing";
 
@@ -9,42 +10,98 @@ class App extends React.Component {
     this.state = {
       notes: [],
       search: "",
-      // isLoggedIn: false,
       currentPage: "landing",
+      currentUser: null,
+      allUsers: [],
     };
   }
 
+  // assign a "page" parameter so that we can pass the "page" later in the render() component.
   handlePage = (page) => {
     this.setState({
       currentPage: page,
     });
   };
 
+  // pass this function to Login component to check if it is an existing user stored in local storage
+  handleLogin = (user) => {
+    const { username, password } = user;
+    // retrieve if any, else, return empty array.
+    const storedUserList = JSON.parse(localStorage.getItem("allUsers")) || [];
+
+    console.log(`storedUserList: `, storedUserList);
+
+    const checkForExistingUser = storedUserList.find(
+      (existingUser) =>
+        existingUser.username === username && existingUser.password === password
+    );
+
+    // if checkForExistingUser is true, update state.
+    // not sure if we need this for home page to render out notes?
+    if (checkForExistingUser) {
+      this.setState({
+        currentUser: checkForExistingUser,
+      });
+    }
+  };
+
+  // to pass this function to Home component -- to be actioned.
+  handleLogout = () => {
+    this.setState({
+      currentUser: null,
+    });
+  };
+
   render() {
-    // const { notes, search, currentPage } = this.state;
-    const { currentPage } = this.state;
+    const { currentPage, currentUser } = this.state;
 
     let pageNavigation;
 
     if (currentPage === "login") {
       pageNavigation = (
+        //pass "handleLandingPage" & "handlePageChange" as props to Login (child)
         <Login
-          goBackLandingPage={() => this.handlePage("landing")}
+          handleLandingPage={() => this.handlePage("landing")}
+          handlePageChange={() => this.handlePage("home")}
+          handleLoginUser={this.handleLogin}
+          currentUser={currentUser}
+        />
+      );
+    } else if (currentPage === "signup") {
+      pageNavigation = (
+        //pass "handleLandingPage" & "handlePageChange" as props to Signup (child)
+        <Signup
+          handleLandingPage={() => this.handlePage("landing")}
           handlePageChange={() => this.handlePage("home")}
         />
       );
     } else if (currentPage === "home") {
-      pageNavigation = <Home />;
+      pageNavigation = (
+        //pass "handleLandingPage" as props to Home (child)
+        <Home
+          handleLandingPage={() => this.handlePage("landing")}
+          handleLogout={this.handleLogout}
+        />
+      );
     } else {
+      // since currently our this.state.currentPage is at Landing, the following will be rendered out:
       pageNavigation = (
         <div className="landing-page">
           <LandingHeader />
-          <button
-            className="landing-login-button"
-            onClick={() => this.handlePage("login")}
-          >
-            log in
-          </button>
+          <div className="landing-buttons">
+            <button
+              className="landing-signup-button"
+              onClick={() => this.handlePage("signup")}
+            >
+              sign up
+            </button>
+            <button
+              className="landing-login-button"
+              onClick={() => this.handlePage("login")}
+            >
+              log in
+            </button>
+          </div>
           <button
             className="landing-guest-button"
             onClick={() => this.handlePage("home")}
@@ -59,96 +116,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// // create a addNote helper function to pass in the information that user has keyed in. The information will then be displayed in our AddNote.js
-// addNote = (noteTitle, noteText) => {
-//   console.log(noteTitle);
-//   const date = new Date();
-//   const newNoteTemplate = {
-//     id: nanoid(),
-//     title: noteTitle,
-//     text: noteText,
-//     date: date.toLocaleDateString(),
-//     expanded: false,
-//   };
-
-//   // use spread operator as we do not want to mutate our this.state.note
-//   const newNotes = [...this.state.notes, newNoteTemplate];
-
-//   // update our state so the 'notes' state will re-render whenever a new note is added!
-//   this.setState({
-//     notes: newNotes,
-//   });
-// };
-
-// // delete note based on the note's id
-// deleteNote = (id) => {
-//   // filter() creates a new array filled with elements that pass the text provided by the function below.
-//   const newNotesArray = this.state.notes.filter((note) => note.id !== id);
-
-//   // re-render the notes' state with the updated list of notes after user has deleted a note.
-//   this.setState({
-//     notes: newNotesArray,
-//   });
-// };
-
-// editNote = (id, updatedTitle, updatedText) => {
-//   // pass a parameter in seState to ensure that the most up-to-date..
-//   this.setState((prevState) => {
-//     // .map() to create a new array w/o modifying the original array
-//     const updatedNotes = prevState.notes.map((note) => {
-//       if (note.id === id) {
-//         return {
-//           // use spread operator to preserve existing properties of the 'note' object while updating the title & text properties with the new values.
-//           ...note,
-//           title: updatedTitle,
-//           text: updatedText,
-//         };
-//       }
-//       return note;
-//     });
-//     return {
-//       notes: updatedNotes,
-//     };
-//   });
-// };
-
-// // Enabling Local Storage
-// componentDidMount() {
-//   //retrieve "notes" with getItem from json data
-//   const currentNotesData = localStorage.getItem("notes");
-//   // if some notes data already exist, convert them from json data to object, else, display empty notes.
-//   const currentNotes = currentNotesData ? JSON.parse(currentNotesData) : [];
-//   this.setState({
-//     notes: currentNotes,
-//   });
-// }
-
-// //use setter method here to pass the updated notes to store in local storage as json data
-// componentDidUpdate(prevProps, prevState) {
-//   const updatedNotesData = JSON.stringify(this.state.notes);
-//   localStorage.setItem("notes", updatedNotesData);
-// }
-
-// toggleNoteExpansion = (id) => {
-//   this.setState((prevState) => {
-//     const expandedNote = prevState.notes.map((note) => {
-//       if (note.id === id) {
-//         return {
-//           ...note,
-//           expanded: !note.expanded,
-//         };
-//       }
-//       return note;
-//     });
-//     return {
-//       notes: expandedNote,
-//     };
-//   });
-// };
-
-// handleSearch = (searchText) => {
-//   this.setState({
-//     search: searchText,
-//   });
-// };

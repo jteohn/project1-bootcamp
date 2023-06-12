@@ -7,26 +7,10 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      // utilising hash map object to store key-value pairs. key ==> user, value ==> user's notes.
-      currentUsers: [],
     };
   }
 
-  // at first instance, when browser loads + after user tried logging in.
-  componentDidMount() {
-    // retrieve "users" with getItem from json data
-    let currentUserData = localStorage.getItem("users");
-
-    // check if user already exists in local storage
-    if (currentUserData) {
-      currentUserData = JSON.parse(currentUserData);
-      this.setState({
-        currentUsers: currentUserData,
-      });
-    }
-  }
-
-  // pass in "event" as a parameter to represent the event triggered by the input element
+  // pass in "event" as a parameter to represent the event triggered by the input element (username & password input fields)
   handleInputChange = (event) => {
     console.log(`login input : ${event}`);
     // "events.target" refers to the element that triggered the event (aka the input element) ==> {name, value}
@@ -43,25 +27,32 @@ class Login extends React.Component {
     event.preventDefault();
 
     const { username, password } = this.state;
-    // create a hash map to store username & password (key) & their value
-    let user = {
-      username: username,
-      password: password,
-    };
 
-    // add new users into the current users' array
-    let newUser = [...this.state.currentUsers, user];
+    // retrieve the stored user list from local storage. Use "allUser" across all components.
+    const storedUserList = JSON.parse(localStorage.getItem("allUsers")) || [];
 
-    // add new users into local storage using setter method
-    localStorage.setItem("users", JSON.stringify(newUser));
-    alert(`Hello! Welcome, ${username}!`);
+    // check if the user input username & password match any data from our local storage
+    const user = storedUserList.find(
+      (user) => user.username === username && user.password === password
+    );
 
-    this.setState({
-      username: "",
-      password: "",
-      currentUsers: newUser,
-    });
-    this.props.handlePageChange("home");
+    // if user already exists in local storage
+    if (user) {
+      // use setter method to store any new notes from said user to the user's local storage
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      this.setState({
+        username: "",
+        password: "",
+      });
+
+      this.props.handleLoginUser(user);
+      this.props.handlePageChange("home");
+    } else {
+      alert(
+        "Invalid username or password. If you are new here, please proceed to the sign up page to create your account!"
+      );
+    }
   };
 
   render() {
@@ -72,11 +63,11 @@ class Login extends React.Component {
           <form className="login-form" onSubmit={this.handleSubmit}>
             <button
               className="login-back-button"
-              onClick={() => this.props.goBackLandingPage()}
+              onClick={() => this.props.handleLandingPage()}
             >
               back to previous page
             </button>
-            <h1 className="login-title">Log in to notes</h1>
+            <h1 className="login-title">Log in to notes.</h1>
             <div>
               <label className="login-labels">
                 Username:
@@ -86,17 +77,19 @@ class Login extends React.Component {
                   className="login-input-field"
                   name="username"
                   onChange={(event) => this.handleInputChange(event)}
+                  required
                 />
               </label>
               <br />
               <label className="login-labels">
                 Password :
                 <input
-                  type="text"
+                  type="password"
                   value={password}
                   className="login-input-field"
                   name="password"
                   onChange={(event) => this.handleInputChange(event)}
+                  required
                 />
               </label>
             </div>
@@ -113,8 +106,4 @@ class Login extends React.Component {
 
 export default Login;
 
-//form - flexbox
-
-// landing page --> login page
-// ask for username & password (Form)
-// pass the information from here to App.js (parent) to render out the user's notes stored within the local storage.
+// managed to solve login component, able to check for existing users, and return alert statement if the username/pw is not found.

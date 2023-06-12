@@ -39,35 +39,58 @@ code {
 }
 
 .landing-title {
-  font-size: 10vw;
+  font-size: 20vw;
   font-family: "Abhaya Libre ExtraBold";
   letter-spacing: 0.18rem;
   opacity: 0.8;
   align-items: center;
   margin-top: 12rem;
-  text-shadow: white -6px 5px;
+  text-shadow: white -0.35vw 0.35vw;
   margin-bottom: -0.5vw;
 }
 
-.landing-login-button {
-  background-color: #faedcd;
-  color: #5b5959;
+.landing-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 25vw;
+}
+
+.landing-signup-button {
+  background-color: #ffffff;
+  color: #7d7d7d;
   border-radius: 50px;
-  width: 9vw;
+  width: 10vw;
   height: 4vw;
   border: none;
   font-family: "Abhaya Libre ExtraBold";
   font-style: normal;
   font-weight: 800;
   font-size: 2vw;
-  margin-top: 1vw;
+  margin-top: 0.05vw;
+  margin-bottom: 1vw;
+  letter-spacing: 0.01rem;
+}
+
+.landing-login-button {
+  background-color: #faedcd;
+  color: #5b5959;
+  border-radius: 50px;
+  width: 10vw;
+  height: 4vw;
+  border: none;
+  font-family: "Abhaya Libre ExtraBold";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2vw;
+  margin-top: 0.05vw;
   margin-bottom: 1vw;
   letter-spacing: 0.01rem;
 }
 
 .landing-login-button:hover {
-  background-color: #fae29f;
+  background-color: #fade92;
   cursor: pointer;
+  transition: ease-in 0.3s;
 }
 
 .landing-guest-button {
@@ -84,27 +107,80 @@ code {
   color: #fae29f;
 }
 
-@media screen and (max-width: 1000px) {
-  .landing-title {
-    font-size: 20vw;
-    margin-top: 10rem;
-    text-shadow: white -0.6vw 0.7vw;
-  }
+.landing-signup-button:hover {
+  background-color: #6f6a6a5c;
+  color: #ffffff;
+  cursor: pointer;
+  transition: ease-in 0.3s;
+}
 
+@media screen and (max-width: 800px) {
+  .landing-title {
+    margin-top: 25vw;
+    text-shadow: white -0.5vw 0.5vw;
+  }
   .landing-login-button {
-    margin-top: 0.8vw;
+    font-size: 1.8vw;
+  }
+  .landing-signup-button {
+    font-size: 1.8vw;
   }
 }
 
-@media screen and (min-width: 1000px) {
-  .landing-login-button {
-    width: 7vw;
-    height: 3vw;
-    font-size: 1.5vw;
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .landing-title {
+    margin-top: 15vw;
   }
-  .landing-guest-button {
-    font-size: 1.5vw;
+}
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
+  .landing-title {
+    margin-top: 10vw;
   }
+}
+@media screen and (min-width: 1600px) {
+  .landing-title {
+    margin-top: 8vw;
+  }
+}
+
+/* ============== SIGNUP PAGE ============== */
+.signup-title {
+  font-size: 4vw;
+  padding: 0 5vw 0 5vw;
+  opacity: 0.8;
+  font-family: "Abhaya Libre ExtraBold";
+  align-items: center;
+  text-align: center;
+  padding: 0 8vw 0 8vw;
+}
+
+.signup-submit-button {
+  background-color: #ebd7a0bf;
+  border: none;
+  border-radius: 30px;
+  margin-top: 3vw;
+  width: 30vw;
+  margin-bottom: 1vw;
+  height: 4vw;
+  color: #ffffff;
+  text-align: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 2.5vw;
+  font-family: "Abhaya Libre ExtraBold";
+  cursor: pointer;
+}
+
+.signup-submit-button:hover {
+  background-color: #d5c8c8;
+  transition: ease-in 0.3s;
+}
+
+.signup-input-field {
+  border: none;
+  margin-bottom: 0.5vw;
+  margin-left: 0.5vw;
+  font-size: 1.5vw;
 }
 
 /* ============== LOGIN PAGE ============== */
@@ -126,10 +202,11 @@ code {
 }
 
 .login-title {
-  font-size: 6vw;
+  font-size: 4vw;
   opacity: 0.8;
   font-family: "Abhaya Libre ExtraBold";
   align-items: center;
+  text-align: center;
 }
 
 .login-form {
@@ -137,118 +214,112 @@ code {
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  margin-top: 20vw;
+  margin-top: 5vw;
   background-color: #fffaf5c5;
-  width: 50vw;
+  width: 55vw;
   border-radius: 40px;
-  padding-bottom: 2vw;
+  padding-bottom: 1vw;
 }
 
 .login-input-field {
-  border: groove;
+  border: none;
   margin-left: 0.5vw;
-  background-color: transparent;
   margin-bottom: 0.5vw;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .login-submit-button {
-  background-color: #c0b1af;
+  background-color: #c8b4b2;
   border: none;
   border-radius: 30px;
   margin-top: 3vw;
-  width: 35vw;
-  height: 5vw;
+  width: 30vw;
+  margin-bottom: 1vw;
+  height: 4vw;
   color: #ffffff;
   text-align: center;
   align-items: center;
   font-weight: 600;
-  font-size: 3vw;
+  font-size: 2.5vw;
   font-family: "Abhaya Libre ExtraBold";
   cursor: pointer;
 }
 
+.login-submit-button:hover {
+  background-color: #ebd7a0bf;
+  transition: ease-in 0.3s;
+}
+
 .login-labels {
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   opacity: 0.8;
 }
 
 @media screen and (max-width: 500px) {
   .login-form {
-    margin-top: 20vw;
+    margin-top: 15vw;
     width: 60vw;
     border-radius: 30px;
   }
   .login-title {
     font-size: 5vw;
-    font-family: "Abhaya Libre ExtraBold";
-    align-items: center;
-    font-weight: 600;
-    text-align: center;
   }
-  .login-labels {
-    font-size: 1.5vw;
+  .signup-title {
+    padding: 0 10vw 0 10vw;
   }
 }
-
-@media screen and (max-width: 400px) {
-  .login-form {
-    margin-top: 30vw;
-    width: 70vw;
-  }
-  .login-title {
-    font-size: 5vw;
-  }
-  .login-labels {
-    font-size: 2vw;
-  }
-  .login-back-button {
-    font-size: 2vw;
-  }
-}
-
 @media screen and (min-width: 500px) and (max-width: 900px) {
   .login-form {
-    margin-top: 20vw;
-    width: 50vw;
+    margin-top: 11vw;
+    width: 60vw;
+    border-radius: 30px;
   }
   .login-title {
     font-size: 5vw;
   }
-  .login-labels {
-    font-size: 1.5vw;
+}
+@media screen and (min-width: 900px) and (max-width: 1400px) {
+  .login-form {
+    margin-top: 9vw;
   }
   .login-input-field {
     font-size: 1.5vw;
   }
 }
-
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1400px) and (max-width: 1900px) {
   .login-form {
-    margin-top: 8vw;
-    width: 45vw;
-    padding-bottom: 1vw;
-  }
-  .login-title {
-    font-size: 4vw;
-  }
-
-  .login-submit-button {
-    margin-top: 3vw;
-    width: 30vw;
-    height: 4vw;
-    font-size: 2vw;
-  }
-  .login-labels {
-    font-size: 1.5vw;
-  }
-  .login-input-field {
-    font-size: 1.5vw;
+    margin-top: 7vw;
   }
 }
 
 /* ============== PAGE HEADER [TITLE + SEARCH BAR] ============== */
 
+.home-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-back-button {
+  background-color: #faedcd;
+  color: #5b5959;
+  border-radius: 50px;
+  width: 5.5rem;
+  height: 2rem;
+  border: none;
+  font-family: "Abhaya Libre ExtraBold";
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.01rem;
+}
+
+.home-back-button:hover {
+  background-color: #fade92b7;
+  cursor: pointer;
+  transition: ease-in 0.3s;
+  color: #80808090;
+}
+
+/* CSS STYLING TO REDO!!! */
 .header-title {
   font-size: 11vh;
   font-family: "Abhaya Libre ExtraBold";

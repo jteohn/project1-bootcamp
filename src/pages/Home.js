@@ -11,7 +11,7 @@ class Home extends React.Component {
     this.state = {
       notes: [],
       search: "",
-      currentPage: "home",
+      currentUser: [],
     };
   }
 
@@ -68,22 +68,43 @@ class Home extends React.Component {
     });
   };
 
-  // Enabling Local Storage
+  // if user exists already, load the user's notes
   componentDidMount() {
-    //retrieve "notes" with getItem from json data
-    const currentNotesData = localStorage.getItem("notes");
-    // if some notes data already exist, convert them from json data to object, else, display empty notes.
-    const currentNotes = currentNotesData ? JSON.parse(currentNotesData) : [];
-    this.setState({
-      notes: currentNotes,
-    });
+    // retrieve "users" with getItem from json data
+    let currentUserData = localStorage.getItem("users");
+
+    // check if user already exists in local storage
+    if (currentUserData) {
+      currentUserData = JSON.parse(currentUserData);
+      this.setState({
+        currentUsers: currentUserData,
+      });
+
+      const userNotes = localStorage.getItem(
+        `notes_${currentUserData.username}`
+      );
+
+      if (userNotes) {
+        this.setState({
+          notes: JSON.parse(userNotes),
+        });
+      }
+    }
   }
 
-  //use setter method here to pass the updated notes to store in local storage as json data
-  componentDidUpdate(prevProps, prevState) {
-    const updatedNotesData = JSON.stringify(this.state.notes);
-    localStorage.setItem("notes", updatedNotesData);
-  }
+  saveUserNotes = (note) => {
+    const { notes, currentUser } = this.state;
+
+    note.userID = currentUser.username;
+    localStorage.setItem(
+      `notes_${currentUser.username}`,
+      JSON.stringify([...notes, note])
+    );
+
+    this.setState((prevState) => ({
+      notes: [...prevState.notes, note],
+    }));
+  };
 
   toggleNoteExpansion = (id) => {
     this.setState((prevState) => {
@@ -109,12 +130,24 @@ class Home extends React.Component {
   };
 
   render() {
-    const { notes, search, currentPage } = this.state;
+    const { notes, search, currentUser } = this.state;
+
+    const userNotes = notes.filter(
+      (note) => note.userID === currentUser.userID
+    );
 
     return (
       <div className="App-container">
         <header className="App-header">
-          <Header />
+          <div className="home-nav">
+            <Header />
+            <button
+              className="home-back-button"
+              onClick={() => this.props.handleLandingPage()}
+            >
+              Sign out
+            </button>
+          </div>
           <Search handleSearch={this.handleSearch} />
           <NoteList
             notes={notes.filter(
@@ -134,3 +167,20 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+// // Enabling Local Storage
+// componentDidMount() {
+//   //retrieve "notes" with getItem from json data
+//   const currentNotesData = localStorage.getItem("notes");
+//   // if some notes data already exist, convert them from json data to object, else, display empty notes.
+//   const currentNotes = currentNotesData ? JSON.parse(currentNotesData) : [];
+//   this.setState({
+//     notes: currentNotes,
+//   });
+// }
+
+// //use setter method here to pass the updated notes to store in local storage as json data
+// componentDidUpdate(prevProps, prevState) {
+//   const updatedNotesData = JSON.stringify(this.state.notes);
+//   localStorage.setItem("notes", updatedNotesData);
+// }
