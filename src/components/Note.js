@@ -46,16 +46,18 @@ class Note extends React.Component {
     });
   };
 
+  handleDelete = () => {
+    const { id, handleDeleteNote } = this.props;
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
+    if (confirmDelete) {
+      handleDeleteNote(id);
+    }
+  };
+
   render() {
-    const {
-      id,
-      title,
-      text,
-      date,
-      handleDeleteNote,
-      expanded,
-      handleExpandNote,
-    } = this.props;
+    const { id, title, text, date, expanded, handleExpandNote } = this.props;
 
     const { isEditing, updatedTitle, updatedText } = this.state;
 
@@ -132,7 +134,7 @@ class Note extends React.Component {
             src={trash}
             alt="delete icon"
             height="25px"
-            onClick={() => handleDeleteNote(id)}
+            onClick={this.handleDelete}
           />
           {expanded ? collapseIcon : expandIcon}
         </div>
