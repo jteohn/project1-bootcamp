@@ -58,7 +58,7 @@ class AddNote extends React.Component {
           className="add-note"
           rows="8"
           cols="10"
-          placeholder="type your note here..."
+          placeholder="Add your text here..."
           value={noteText}
           onChange={this.handleTextChange}
         ></textarea>

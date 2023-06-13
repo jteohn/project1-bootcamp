@@ -80,31 +80,43 @@ class Note extends React.Component {
 
     const mainClassName = `note ${expanded ? "expanded" : ""}`;
 
+    const expandedTextStyle = expanded
+      ? { height: "60vh" }
+      : { height: "10vh" };
+
+    const expandedTitleStyle = expanded
+      ? { height: "10vh" }
+      : { height: "5vh" };
+
     return (
       <div className={mainClassName}>
         {/* NOTE TITLE */}
         {isEditing ? (
-          <input
-            className="edit-note-title edit-note"
+          <textarea
+            className="edit-TitleBox"
             type="text"
             value={updatedTitle}
+            placeholder="add title here"
             onChange={this.handleEditTitle}
+            style={expandedTitleStyle}
           />
         ) : (
-          <span className="note-title noteTitle-content">{title}</span>
+          <span className="notes-title">{title}</span>
         )}
         {/* NOTE TEXT */}
         {isEditing ? (
           <textarea
-            className="edit-note-text edit-note"
+            className="edit-TextBox"
             value={updatedText}
+            placeholder="add text here"
             onChange={this.handleEditText}
+            style={expandedTextStyle}
           />
         ) : (
-          <span className="note-description noteText-content">{text}</span>
+          <span className="notes-text">{text}</span>
         )}
         {/* NOTE FOOTER */}
-        <div className="note-footer">
+        <div className="notes-footer">
           <small>{date}</small>
           {isEditing ? (
             <button className="edit-note-button" onClick={this.handleSaveEdits}>

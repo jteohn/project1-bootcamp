@@ -322,7 +322,6 @@ code {
   color: #80808090;
 }
 
-/* CSS STYLING TO REDO!!! */
 .header-title {
   font-size: 8vw;
   font-family: "Abhaya Libre ExtraBold";
@@ -357,27 +356,33 @@ code {
   outline: none;
 }
 
-/* @media screen and (min-width: 500px) and (max-width: 900px) {
+@media screen and (max-width: 500px) {
   .header-title {
-    font-size: 11vh;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 11vw;
+  }
+  .home-back-button {
+    width: 4rem;
+    height: 1.5rem;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+  .header-title {
+    font-size: 11.5vw;
   }
 }
 @media screen and (min-width: 900px) and (max-width: 1400px) {
   .header-title {
-    font-size: 11vh;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 10vw;
   }
 }
 @media screen and (min-width: 1400px) and (max-width: 1900px) {
   .header-title {
-    font-size: 11vh;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 9vw;
   }
-} */
+}
 
 /* ============== PAGE CONTENT [DISPLAY NOTES] ============== */
 .notes-list {
@@ -402,35 +407,28 @@ code {
   overflow: hidden;
 }
 
-/* --------- [DISPLAY NOTES] Note Title --------- */
-.noteTitle-content {
-  overflow: auto;
-  max-height: 48px;
-}
+/* ============== [HOME PAGE] DISPLAY ALL NOTES ============== */
 
-.note-title {
+.notes-title {
   font-size: 1.2rem;
   color: #000000;
   font-weight: bold;
   overflow-wrap: break-word;
+  /* overflow: auto;
+  max-height: 48px; */
 }
 
-/* --------- [DISPLAY NOTES] Note Text --------- */
-.noteText-content {
-  overflow: auto;
-  max-height: 240px;
-}
-
-.note-description {
+.notes-text {
   font-size: 0.8rem;
   color: #000000;
   overflow-wrap: break-word;
-  margin-top: 10px;
+  margin-top: 1.5vh;
   margin-bottom: auto;
+  /* overflow: auto;
+  max-height: 240px; */
 }
 
-/* --------- [DISPLAY NOTES] Note Footer --------- */
-.note-footer {
+.notes-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -444,7 +442,7 @@ code {
   /* to include @media */
 }
 
-/* --------- [ADD NEW NOTE] Note Title --------- */
+/* --------- [ADD NEW NOTE] Title --------- */
 .new-note-title {
   font-size: 1.2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -453,7 +451,7 @@ code {
   font-weight: bold;
 }
 
-/* --------- [ADD NEW NOTE] Note Text --------- */
+/* --------- [ADD NEW NOTE] Text --------- */
 textarea.add-note {
   background-color: #baaaaa;
   color: #000000;
@@ -488,11 +486,9 @@ textarea.add-note:focus {
   .notes-list {
     grid-template-columns: repeat(auto-fit, minmax(150px, 500px));
   }
-
   .note {
     min-width: 150px;
   }
-
   .note.new {
     min-width: 150px;
   }
@@ -503,11 +499,9 @@ textarea.add-note:focus {
   .notes-list {
     grid-template-columns: repeat(auto-fit, minmax(240px, 340px));
   }
-
   .note {
     min-width: 240px;
   }
-
   .note.new {
     min-width: 240px;
   }
@@ -515,27 +509,23 @@ textarea.add-note:focus {
 
 /* ============== PAGE CONTENT [EDIT NOTE] ============== */
 
-/* .update-textField {
-  background: #ffffff;
-  opacity: 0.7;
-  margin-top: 1rem;
-  margin-bottom: auto;
-  height: 6rem;
-} */
-
-/* NEED TO FIX THISSSS!!!! ADD @MEDIA */
-.edit-note-title {
-  font-size: 1.2rem;
+textarea.edit-TitleBox {
+  background-color: #ffffff6f;
+  resize: none;
+  padding-bottom: 0px;
+  height: 5vh;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   color: #000000;
   font-weight: bold;
   border: none;
-  background-color: #ffffff;
   outline: none;
-  overflow: scroll;
 }
 
-textarea.edit-note {
-  background-color: transparent;
+textarea.edit-TextBox {
+  background-color: #bbbbbb3a;
   color: #000000;
   font-size: 0.8rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -544,11 +534,11 @@ textarea.edit-note {
   border: 3px inset #baaaaa;
   resize: none;
   margin-bottom: auto;
-  margin-top: 15px;
+  margin-top: 1.5vh;
   min-height: 10vh;
 }
 
-textarea.edit-note:focus {
+textarea.edit-TextBox:focus {
   outline: none;
 }
 
@@ -591,11 +581,11 @@ textarea.edit-note:focus {
   right: 0;
   left: 0;
   z-index: 1;
-  background-color: #d6ccc2;
+  background-color: #ece7e1;
   border: 10px outset #baaaaa;
   opacity: 1;
-  padding: 50px;
-  margin: 30px;
+  padding: 20px;
+  margin: 25px 20px 25px 20px;
   /* margin: 0 auto; */
   overflow: auto;
 }
