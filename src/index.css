@@ -116,7 +116,7 @@ code {
 
 @media screen and (max-width: 800px) {
   .landing-title {
-    margin-top: 25vw;
+    margin-top: 22vw;
     text-shadow: white -0.5vw 0.5vw;
   }
   .landing-login-button {
@@ -129,17 +129,20 @@ code {
 
 @media screen and (min-width: 800px) and (max-width: 1200px) {
   .landing-title {
+    font-size: 18vw;
     margin-top: 15vw;
   }
 }
 @media screen and (min-width: 1200px) and (max-width: 1600px) {
   .landing-title {
+    font-size: 16vw;
     margin-top: 10vw;
   }
 }
 @media screen and (min-width: 1600px) {
   .landing-title {
-    margin-top: 8vw;
+    font-size: 15vw;
+    margin-top: 9vw;
   }
 }
 
@@ -321,7 +324,7 @@ code {
 
 /* CSS STYLING TO REDO!!! */
 .header-title {
-  font-size: 11vh;
+  font-size: 8vw;
   font-family: "Abhaya Libre ExtraBold";
   letter-spacing: 0.18rem;
   margin-top: 1.5rem;
@@ -353,6 +356,28 @@ code {
 .search input:focus {
   outline: none;
 }
+
+/* @media screen and (min-width: 500px) and (max-width: 900px) {
+  .header-title {
+    font-size: 11vh;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (min-width: 900px) and (max-width: 1400px) {
+  .header-title {
+    font-size: 11vh;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1900px) {
+  .header-title {
+    font-size: 11vh;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+} */
 
 /* ============== PAGE CONTENT [DISPLAY NOTES] ============== */
 .notes-list {

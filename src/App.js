@@ -49,7 +49,9 @@ class App extends React.Component {
   handleLogout = () => {
     this.setState({
       currentUser: null,
+      currentPage: "landing",
     });
+    alert(`You have successfully logged out. Thank you for using notes!`);
   };
 
   render() {
@@ -64,7 +66,6 @@ class App extends React.Component {
           handleLandingPage={() => this.handlePage("landing")}
           handlePageChange={() => this.handlePage("home")}
           handleLoginUser={this.handleLogin}
-          currentUser={currentUser}
         />
       );
     } else if (currentPage === "signup") {
@@ -81,6 +82,7 @@ class App extends React.Component {
         <Home
           handleLandingPage={() => this.handlePage("landing")}
           handleLogout={this.handleLogout}
+          currentUser={currentUser}
         />
       );
     } else {
