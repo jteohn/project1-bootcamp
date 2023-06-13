@@ -20,14 +20,12 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { username, password } = this.state;
-
     // retrieve if any, else, return empty array.
     const storedUserList = JSON.parse(localStorage.getItem("allUsers")) || [];
 
     // check if the username has already been registered
     const isUsernameTaken = storedUserList.find(
-      (user) => user.username === username
+      (user) => user.username === this.state.username
     );
 
     // if username is already taken, alert the user
@@ -40,8 +38,8 @@ class Signup extends React.Component {
 
     // create a hash map to store new username & password (keys) & their values
     const newUser = {
-      username: username,
-      password: password,
+      username: this.state.username,
+      password: this.state.password,
     };
 
     // update the list of all users in a new list --> updatedUserList
@@ -56,9 +54,12 @@ class Signup extends React.Component {
     localStorage.setItem("allUsers", JSON.stringify(updatedUserList));
 
     // alert user to inform them that an account has been created
-    alert(`Welcome, ${username}! Thank you for signing up with us!!`);
+    alert(
+      `Welcome, ${this.state.username}! Thank you for signing up with us!!`
+    );
 
     this.props.handlePageChange("home");
+    this.props.handleSignupComplete(newUser);
   };
 
   render() {

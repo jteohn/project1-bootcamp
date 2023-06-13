@@ -37,7 +37,6 @@ class App extends React.Component {
     );
 
     // if checkForExistingUser is true, update state.
-    // not sure if we need this for home page to render out notes?
     if (checkForExistingUser) {
       this.setState({
         currentUser: checkForExistingUser,
@@ -45,7 +44,11 @@ class App extends React.Component {
     }
   };
 
-  // to pass this function to Home component -- to be actioned.
+  handleSignupComplete = (newUser) => {
+    this.setState({ currentUser: newUser });
+    console.log("New user signed up: ", newUser);
+  };
+
   handleLogout = () => {
     this.setState({
       currentUser: null,
@@ -74,6 +77,7 @@ class App extends React.Component {
         <Signup
           handleLandingPage={() => this.handlePage("landing")}
           handlePageChange={() => this.handlePage("home")}
+          handleSignupComplete={this.handleSignupComplete}
         />
       );
     } else if (currentPage === "home") {

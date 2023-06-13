@@ -11,28 +11,36 @@ class Home extends React.Component {
     this.state = {
       notes: [],
       search: "",
-      // currentUser: [],
     };
   }
 
   // componentDidMount lifecycle upon user signs in to load the previous notes from local storage when the component mounts (renders). Use the getter method to retrieve notes from localstorage.
   componentDidMount() {
-    // const {currentUser} = this.state;
     const storedNotes = localStorage.getItem("storedNotes");
+
     // if there is indeed notes stored in local storage, convert them + display it in Home page.
     if (storedNotes) {
       const allStoredNotes = JSON.parse(storedNotes);
+      const { currentUser } = this.props;
 
       // breakdown: (1) this.props.currentUser accesses the 'currentUser' prop that is passed to the component. This prop will contain an object representing the current user.
       // (2) { username } is a destructuring assignment syntax, which extracts the "username" property from the 'currentUser' object and assigns it to a new variable called username.
       // (3) it is the same as "this.props.currentUser.username"
-      const { username } = this.props.currentUser;
 
-      // filter all the notes to only show notes tagged to the username
-      const extractUserNotes = allStoredNotes[username] || [];
-      this.setState({
-        notes: extractUserNotes,
-      });
+      if (currentUser) {
+        const { username } = currentUser;
+
+        // filter all the notes to only show notes tagged to the username
+        const extractUserNotes = allStoredNotes[username] || [];
+        this.setState({
+          notes: extractUserNotes,
+        });
+      } else {
+        this.setState({
+          notes: [],
+          currentUser: "Guest",
+        });
+      }
     }
   }
 
@@ -44,9 +52,17 @@ class Home extends React.Component {
       const storedUserNotes = localStorage.getItem("storedNotes");
       let allNotes = storedUserNotes ? JSON.parse(storedUserNotes) : {};
 
+      const { currentUser } = this.props;
+
+      if (currentUser) {
+        const { username } = currentUser;
+        allNotes[username] = this.state.notes;
+      } else {
+        const username = "Guest";
+        allNotes[username] = this.state.notes;
+      }
+
       // store notes based on username
-      const { username } = this.props.currentUser;
-      allNotes[username] = this.state.notes;
       localStorage.setItem("storedNotes", JSON.stringify(allNotes));
     }
   }
@@ -54,14 +70,15 @@ class Home extends React.Component {
   // create a addNote helper function to pass in the information that user has keyed in. The information will then be displayed in our AddNote.js
   addNote = (noteTitle, noteText) => {
     console.log(noteTitle);
-    const { currentUser } = this.props;
     const date = new Date();
     const newNoteTemplate = {
       id: nanoid(),
       title: noteTitle,
       text: noteText,
       date: date.toLocaleDateString(),
-      username: currentUser.username,
+      username: this.props.currentUser
+        ? this.props.currentUser.username
+        : "Guest",
       expanded: false,
     };
 
