@@ -533,10 +533,39 @@ textarea.add-note:focus {
   }
 }
 
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 230px));
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  }
+  .note {
+    min-width: 180px;
+  }
+  .note.new {
+    min-width: 180px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 330px));
+  }
+}
+
 /* ============== PAGE RESPONSIVENESS [BIGGER SCREEN] ============== */
 @media screen and (min-width: 1200px) {
   .notes-list {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 340px));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 330px));
   }
   .note {
     min-width: 240px;
