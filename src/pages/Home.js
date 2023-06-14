@@ -150,7 +150,7 @@ class Home extends React.Component {
           <div className="home-nav">
             <Header />
             <button
-              className="home-back-button"
+              className="home-signout-button"
               onClick={() => this.props.handleLogout()}
             >
               Sign out
