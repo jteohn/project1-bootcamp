@@ -13,22 +13,17 @@ class Login extends React.Component {
   // pass in "event" as a parameter to represent the event triggered by the input element (username & password input fields)
   handleInputChange = (event) => {
     console.log(`login input : ${event}`);
-    // "events.target" refers to the element that triggered the event (aka the input element) ==> {name, value}
-    // use destructuring assignment to extract the "name"(key) and "value" properties from "event.target"
-    // the name property represents the name attribute of the input element, the value property represents the current value of the input
+
     let { name, value } = event.target;
     this.setState({
       [name]: value,
-      // instead of specifying the key directly (e.g., username, password) we can use bracket notation '[name]' if (1) the key is not known beforehand or (2) we want to reuse this handleInputChange for various "inputs" (e.g. username & password).
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const { username, password } = this.state;
 
-    // retrieve the stored user list from local storage. Use "allUser" across all components.
     const storedUserList = JSON.parse(localStorage.getItem("allUsers")) || [];
 
     // check if the user input username & password match any data from our local storage
@@ -38,7 +33,6 @@ class Login extends React.Component {
 
     // if user already exists in local storage
     if (user) {
-      // use setter method to store any new notes from said user to the user's local storage
       localStorage.setItem("currentUser", JSON.stringify(user));
 
       this.setState({

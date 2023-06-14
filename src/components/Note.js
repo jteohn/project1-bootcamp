@@ -57,7 +57,15 @@ class Note extends React.Component {
   };
 
   render() {
-    const { id, title, text, date, expanded, handleExpandNote } = this.props;
+    const {
+      id,
+      title,
+      text,
+      date,
+      expanded,
+      handleExpandNote,
+      // handleSaveNotes,
+    } = this.props;
 
     const { isEditing, updatedTitle, updatedText } = this.state;
 
@@ -120,6 +128,7 @@ class Note extends React.Component {
         {/* NOTE FOOTER */}
         <div className="notes-footer">
           <small>{date}</small>
+          {/* <button onClick={() => handleSaveNotes(id)}>♥️</button> */}
           {isEditing ? (
             <button className="edit-note-button" onClick={this.handleSaveEdits}>
               save

@@ -29,8 +29,6 @@ class AddNote extends React.Component {
     const { handleAddNote } = this.props;
     const { noteTitle, noteText } = this.state;
     // before saving the note, call .trim() to remove whitespace from start & end of the string.
-    // after removing the whitespace, to check if there is still any text remaining by using .length > 0
-    // only if it fulfils the following condition will the note be saved by calling the handleAddNote function.
     if ((noteTitle || noteText).trim().length > 0) {
       handleAddNote(noteTitle, noteText);
       this.setState({
@@ -44,7 +42,6 @@ class AddNote extends React.Component {
     const { noteTitle, noteText } = this.state;
 
     return (
-      // put a spacing between "note" & "new" so that we can reuse the CSS styling from note.js!!
       <div className="note new">
         <textarea
           className="new-note-title add-note"

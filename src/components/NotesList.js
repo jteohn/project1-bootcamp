@@ -9,6 +9,7 @@ class NoteList extends React.Component {
       handleAddNote,
       handleDeleteNote,
       handleEditNote,
+      // handleSaveNotes,
       handleToggleExpansion,
     } = this.props;
 
@@ -25,6 +26,7 @@ class NoteList extends React.Component {
             expanded={note.expanded}
             handleDeleteNote={handleDeleteNote}
             handleEditNote={handleEditNote}
+            // handleSaveNotes={handleSaveNotes}
             handleExpandNote={handleToggleExpansion}
           />
         ))}

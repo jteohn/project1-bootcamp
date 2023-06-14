@@ -64,7 +64,6 @@ class App extends React.Component {
 
     if (currentPage === "login") {
       pageNavigation = (
-        //pass "handleLandingPage" & "handlePageChange" as props to Login (child)
         <Login
           handleLandingPage={() => this.handlePage("landing")}
           handlePageChange={() => this.handlePage("home")}
@@ -73,7 +72,6 @@ class App extends React.Component {
       );
     } else if (currentPage === "signup") {
       pageNavigation = (
-        //pass "handleLandingPage" & "handlePageChange" as props to Signup (child)
         <Signup
           handleLandingPage={() => this.handlePage("landing")}
           handlePageChange={() => this.handlePage("home")}
@@ -82,7 +80,6 @@ class App extends React.Component {
       );
     } else if (currentPage === "home") {
       pageNavigation = (
-        //pass "handleLandingPage" as props to Home (child)
         <Home
           handleLandingPage={() => this.handlePage("landing")}
           handleLogout={this.handleLogout}
@@ -90,7 +87,6 @@ class App extends React.Component {
         />
       );
     } else {
-      // since currently our this.state.currentPage is at Landing, the following will be rendered out:
       pageNavigation = (
         <div className="landing-page">
           <LandingHeader />

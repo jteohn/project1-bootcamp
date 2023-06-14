@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import Header from "../components/Header";
 import NoteList from "../components/NotesList";
 import Search from "../components/Search";
+// import SavedNotes from "../components/SavedNotes";
 
 class Home extends React.Component {
   constructor(props) {
@@ -11,10 +12,10 @@ class Home extends React.Component {
     this.state = {
       notes: [],
       search: "",
+      // savedNotes: [],
     };
   }
 
-  // componentDidMount lifecycle upon user signs in to load the previous notes from local storage when the component mounts (renders). Use the getter method to retrieve notes from localstorage.
   componentDidMount() {
     const storedNotes = localStorage.getItem("storedNotes");
 
@@ -22,10 +23,6 @@ class Home extends React.Component {
     if (storedNotes) {
       const allStoredNotes = JSON.parse(storedNotes);
       const { currentUser } = this.props;
-
-      // breakdown: (1) this.props.currentUser accesses the 'currentUser' prop that is passed to the component. This prop will contain an object representing the current user.
-      // (2) { username } is a destructuring assignment syntax, which extracts the "username" property from the 'currentUser' object and assigns it to a new variable called username.
-      // (3) it is the same as "this.props.currentUser.username"
 
       if (currentUser) {
         const { username } = currentUser;
@@ -44,9 +41,6 @@ class Home extends React.Component {
     }
   }
 
-  // componentDidUpdate to trigger everytime when there are changes to the notes state (e.g., added new notes, edited or deleted notes). Check that the previous state of "notes" is different from the current state before saving it to local storage using setter method
-
-  // note: React handles the passing of 'prevProps' and 'prevState' to componentDidUpdate internally and provide values to us. We do not have to explicitly pass the data.
   componentDidUpdate(prevProps, prevState) {
     if (prevState.notes !== this.state.notes) {
       const storedUserNotes = localStorage.getItem("storedNotes");
@@ -67,8 +61,7 @@ class Home extends React.Component {
     }
   }
 
-  // create a addNote helper function to pass in the information that user has keyed in. The information will then be displayed in our AddNote.js
-  addNote = (noteTitle, noteText) => {
+  handleAddNote = (noteTitle, noteText) => {
     console.log(noteTitle);
     const date = new Date();
     const newNoteTemplate = {
@@ -82,34 +75,27 @@ class Home extends React.Component {
       expanded: false,
     };
 
-    // use spread operator as we do not want to mutate our this.state.note
     const newNotes = [...this.state.notes, newNoteTemplate];
 
-    // update our state so the 'notes' state will re-render whenever a new note is added!
     this.setState({
       notes: newNotes,
     });
   };
 
   // delete note based on the note's id
-  deleteNote = (id) => {
-    // filter() creates a new array filled with elements that pass the text provided by the function below.
+  handleDeleteNote = (id) => {
     const newNotesArray = this.state.notes.filter((note) => note.id !== id);
-
-    // re-render the notes' state with the updated list of notes after user has deleted a note.
     this.setState({
       notes: newNotesArray,
     });
   };
 
-  editNote = (id, updatedTitle, updatedText) => {
+  handleEditNote = (id, updatedTitle, updatedText) => {
     // pass a parameter in seState to ensure that the most up-to-date..
     this.setState((prevState) => {
-      // .map() to create a new array w/o modifying the original array
       const updatedNotes = prevState.notes.map((note) => {
         if (note.id === id) {
           return {
-            // use spread operator to preserve existing properties of the 'note' object while updating the title & text properties with the new values.
             ...note,
             title: updatedTitle,
             text: updatedText,
@@ -122,6 +108,15 @@ class Home extends React.Component {
       };
     });
   };
+
+  // handleSaveNotes = (id) => {
+  //   const { notes, savedNotes } = this.state;
+  //   const noteToSave = notes.find((note) => note.id === id);
+  //   const updatedSavedNotesList = [...savedNotes, noteToSave];
+  //   this.setState({
+  //     savedNotes: updatedSavedNotesList,
+  //   });
+  // };
 
   toggleNoteExpansion = (id) => {
     this.setState((prevState) => {
@@ -168,11 +163,13 @@ class Home extends React.Component {
                 note.title.toLowerCase().includes(search.toLowerCase()) ||
                 note.text.toLowerCase().includes(search.toLowerCase())
             )}
-            handleAddNote={this.addNote}
-            handleDeleteNote={this.deleteNote}
-            handleEditNote={this.editNote}
+            handleAddNote={this.handleAddNote}
+            handleDeleteNote={this.handleDeleteNote}
+            handleEditNote={this.handleEditNote}
+            // handleSaveNotes={this.handleSaveNotes}
             handleToggleExpansion={this.toggleNoteExpansion}
           />
+          {/* <SavedNotes savedNotes={this.state.savedNotes} /> */}
         </header>
       </div>
     );
