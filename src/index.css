@@ -114,16 +114,43 @@ code {
   transition: ease-in 0.3s;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 200px) and (max-width: 800px) {
   .landing-title {
-    margin-top: 22vw;
+    margin-top: 30vw;
+    text-shadow: white -0.5vw 0.5vw;
+  }
+  .landing-signup-button {
+    width: 14vw;
+    height: 6vw;
+    font-weight: 600;
+    font-size: 3vw;
+  }
+
+  .landing-login-button {
+    width: 14vw;
+    height: 6vw;
+    font-weight: 600;
+    font-size: 3vw;
+  }
+  .landing-buttons {
+    width: 33vw;
+  }
+  .landing-guest-button {
+    font-size: 3vw;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 500px) {
+  .landing-title {
+    font-size: 25vw;
+    margin-top: 60vw;
     text-shadow: white -0.5vw 0.5vw;
   }
   .landing-login-button {
-    font-size: 1.8vw;
+    font-size: 2.5vw;
   }
   .landing-signup-button {
-    font-size: 1.8vw;
+    font-size: 2.5vw;
   }
 }
 
@@ -392,8 +419,7 @@ code {
 }
 
 .note {
-  background: #ffffff;
-  opacity: 0.7;
+  background: #ffffff9d;
   border-radius: 30px;
   padding: 1rem;
   min-height: 170px;
@@ -436,7 +462,7 @@ code {
 
 /* ============== PAGE CONTENT [ADD NEW NOTE] ============== */
 .note.new {
-  background-color: #baaaaa;
+  background-color: #baaaaad3;
   min-height: 170px;
   /* min-width: 150px */
   /* to include @media */
@@ -453,7 +479,7 @@ code {
 
 /* --------- [ADD NEW NOTE] Text --------- */
 textarea.add-note {
-  background-color: #baaaaa;
+  background-color: transparent;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -469,7 +495,7 @@ textarea.add-note:focus {
 
 /* --------- [ADD NEW NOTE] Save Button --------- */
 .save-newNote-button {
-  background-color: #ffffff;
+  background-color: #ffffff9d;
   color: #383636;
   border: none;
   border-radius: 15px;
@@ -477,7 +503,7 @@ textarea.add-note:focus {
 }
 
 .save-newNote-button:hover {
-  background-color: #faedcd;
+  background-color: #faedcdce;
   cursor: pointer;
 }
 
@@ -520,7 +546,7 @@ textarea.edit-TitleBox {
     sans-serif;
   color: #000000;
   font-weight: bold;
-  border: none;
+  border: 3px outset #baaaaa;
   outline: none;
 }
 
@@ -531,7 +557,7 @@ textarea.edit-TextBox {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  border: 3px inset #baaaaa;
+  border: 3px outset #baaaaa;
   resize: none;
   margin-bottom: auto;
   margin-top: 1.5vh;
@@ -582,7 +608,7 @@ textarea.edit-TextBox:focus {
   left: 0;
   z-index: 1;
   background-color: #ece7e1;
-  border: 10px outset #baaaaa;
+  border: 10px inset #baaaaa;
   opacity: 1;
   padding: 20px;
   margin: 25px 20px 25px 20px;
