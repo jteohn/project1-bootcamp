@@ -52,15 +52,15 @@ code {
 .landing-buttons {
   display: flex;
   justify-content: space-around;
-  width: 25vw;
+  width: 28vw;
 }
 
 .landing-signup-button {
   background-color: #ffffff;
   color: #7d7d7d;
   border-radius: 50px;
-  width: 10vw;
-  height: 4vw;
+  width: 11vw;
+  height: 4.5vw;
   border: none;
   font-family: "Abhaya Libre ExtraBold";
   font-style: normal;
@@ -75,8 +75,8 @@ code {
   background-color: #faedcd;
   color: #5b5959;
   border-radius: 50px;
-  width: 10vw;
-  height: 4vw;
+  width: 11vw;
+  height: 4.5vw;
   border: none;
   font-family: "Abhaya Libre ExtraBold";
   font-style: normal;
@@ -125,7 +125,6 @@ code {
     font-weight: 600;
     font-size: 3vw;
   }
-
   .landing-login-button {
     width: 14vw;
     height: 6vw;
@@ -140,30 +139,32 @@ code {
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 500px) {
-  .landing-title {
-    font-size: 25vw;
-    margin-top: 60vw;
-    text-shadow: white -0.5vw 0.5vw;
-  }
-  .landing-login-button {
-    font-size: 2.5vw;
-  }
-  .landing-signup-button {
-    font-size: 2.5vw;
-  }
-}
-
 @media screen and (min-width: 800px) and (max-width: 1200px) {
   .landing-title {
-    font-size: 18vw;
-    margin-top: 15vw;
+    margin-top: 25vw;
+    text-shadow: white -0.5vw 0.5vw;
+  }
+  .landing-signup-button {
+    width: 13vw;
+    height: 5vw;
+    font-size: 2.5vw;
+  }
+  .landing-login-button {
+    width: 13vw;
+    height: 5vw;
+    font-size: 2.5vw;
+  }
+  .landing-buttons {
+    width: 33vw;
+  }
+  .landing-guest-button {
+    font-size: 3vw;
   }
 }
 @media screen and (min-width: 1200px) and (max-width: 1600px) {
   .landing-title {
-    font-size: 16vw;
-    margin-top: 10vw;
+    font-size: 18vw;
+    margin-top: 20vw;
   }
 }
 @media screen and (min-width: 1600px) {
