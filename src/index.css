@@ -39,7 +39,7 @@ code {
 }
 
 .landing-title {
-  font-size: 20vw;
+  font-size: 18vw;
   font-family: "Abhaya Libre ExtraBold";
   letter-spacing: 0.18rem;
   opacity: 0.8;
@@ -59,13 +59,13 @@ code {
   background-color: #ffffff;
   color: #7d7d7d;
   border-radius: 50px;
-  width: 10vw;
-  height: 4vw;
+  width: 9vw;
+  height: 3.5vw;
   border: none;
   font-family: "Abhaya Libre ExtraBold";
   font-style: normal;
   font-weight: 800;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
   margin-top: 0.05vw;
   margin-bottom: 1vw;
   letter-spacing: 0.01rem;
@@ -75,13 +75,13 @@ code {
   background-color: #faedcd;
   color: #5b5959;
   border-radius: 50px;
-  width: 10vw;
-  height: 4vw;
+  width: 9vw;
+  height: 3.5vw;
   border: none;
   font-family: "Abhaya Libre ExtraBold";
   font-style: normal;
   font-weight: 800;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
   margin-top: 0.05vw;
   margin-bottom: 1vw;
   letter-spacing: 0.01rem;
@@ -100,7 +100,7 @@ code {
   font-family: "Abhaya Libre ExtraBold";
   font-style: italic;
   font-weight: 600;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
 }
 
 .landing-guest-button:hover {
@@ -141,7 +141,7 @@ code {
 
 @media screen and (min-width: 800px) and (max-width: 1200px) {
   .landing-title {
-    margin-top: 25vw;
+    margin-top: 20vw;
     text-shadow: white -0.5vw 0.5vw;
   }
   .landing-signup-button {
@@ -163,14 +163,14 @@ code {
 }
 @media screen and (min-width: 1200px) and (max-width: 1600px) {
   .landing-title {
-    font-size: 18vw;
-    margin-top: 20vw;
+    font-size: 15vw;
+    margin-top: 13vw;
   }
 }
 @media screen and (min-width: 1600px) {
   .landing-title {
-    font-size: 15vw;
-    margin-top: 9vw;
+    font-size: 12vw;
+    margin-top: 8vw;
   }
 }
 
@@ -351,7 +351,7 @@ code {
 }
 
 .header-title {
-  font-size: 8vw;
+  font-size: 7vw;
   font-family: "Abhaya Libre ExtraBold";
   letter-spacing: 0.18rem;
   margin-top: 1.5rem;
@@ -386,7 +386,7 @@ code {
 
 @media screen and (max-width: 500px) {
   .header-title {
-    font-size: 11vw;
+    font-size: 11.5vw;
   }
   .home-signout-button {
     width: 4rem;
@@ -398,7 +398,7 @@ code {
 
 @media screen and (min-width: 500px) and (max-width: 900px) {
   .header-title {
-    font-size: 11.5vw;
+    font-size: 11vw;
   }
   .home-signout-button {
     width: 5.5rem;
@@ -420,7 +420,7 @@ code {
 }
 @media screen and (min-width: 1400px) and (max-width: 1900px) {
   .header-title {
-    font-size: 9vw;
+    font-size: 7.5vw;
   }
 }
 
