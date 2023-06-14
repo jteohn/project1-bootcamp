@@ -100,4 +100,4 @@ class Login extends React.Component {
 
 export default Login;
 
-// managed to solve login component, able to check for existing users, and return alert statement if the username/pw is not found.
+// managed to resolve login component - able to check for existing users and return alert statement if the username/pw is not found.

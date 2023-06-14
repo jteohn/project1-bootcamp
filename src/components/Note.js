@@ -9,7 +9,7 @@ class Note extends React.Component {
 
     this.state = {
       isEditing: false,
-      // // call this.props to obtain info from Note.js' parent component --> NoteList.js
+      // obtain info from Note.js' parent component --> NoteList.js
       updatedTitle: this.props.title,
       updatedText: this.props.text,
     };
@@ -57,15 +57,7 @@ class Note extends React.Component {
   };
 
   render() {
-    const {
-      id,
-      title,
-      text,
-      date,
-      expanded,
-      handleExpandNote,
-      // handleSaveNotes,
-    } = this.props;
+    const { id, title, text, date, expanded, handleExpandNote } = this.props;
 
     const { isEditing, updatedTitle, updatedText } = this.state;
 
@@ -153,17 +145,3 @@ class Note extends React.Component {
 }
 
 export default Note;
-
-// tasks for this component:
-
-// section top -- title
-// section middle -- description
-// section bottom -- delete icon
-
-// delete icon -- added, done.
-
-// edit function -- note: maybe no need this function since user can edit directly from the notepad itself! can consider changing it to change note bg color function!
-
-// to include edit functionality here as the edit function primarily operates on individual notes and involves updating specific note properties (e.g. title & text). Since the 'edit' function only affects a single note, it makes sense to keep the 'edit' function within the 'Note.js' component. Unless, the 'edit' function allows users to coordinate with multiple notes or requires access to the entire list of notes, then it'll be more appropriate to handle the edit functionality within 'NoteList.js'
-
-// add a button for user to save their edits.

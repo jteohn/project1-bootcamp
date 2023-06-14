@@ -166,10 +166,8 @@ class Home extends React.Component {
             handleAddNote={this.handleAddNote}
             handleDeleteNote={this.handleDeleteNote}
             handleEditNote={this.handleEditNote}
-            // handleSaveNotes={this.handleSaveNotes}
             handleToggleExpansion={this.toggleNoteExpansion}
           />
-          {/* <SavedNotes savedNotes={this.state.savedNotes} /> */}
         </header>
       </div>
     );

@@ -107,4 +107,4 @@ class Signup extends React.Component {
 
 export default Signup;
 
-// managed to solve the sign up component error, now it is able to validate if the username has already been registered and show an alert message.
+// managed to resolve the sign up component error - it is now able to validate if the username has already been registered and show an alert message.
