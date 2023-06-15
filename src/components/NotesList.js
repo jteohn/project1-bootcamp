@@ -2,7 +2,7 @@ import React from "react";
 import Note from "./Note";
 import AddNote from "./AddNote";
 
-class NoteList extends React.Component {
+class NotesList extends React.Component {
   render() {
     const {
       notes,
@@ -33,6 +33,6 @@ class NoteList extends React.Component {
   }
 }
 
-export default NoteList;
+export default NotesList;
 
 // note list is to store all the notes

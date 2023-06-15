@@ -1,7 +1,7 @@
 import React from "react";
 import { nanoid } from "nanoid";
 import Header from "../components/Header";
-import NoteList from "../components/NotesList";
+import NotesList from "../components/NotesList";
 import Search from "../components/Search";
 // import SavedNotes from "../components/SavedNotes";
 
@@ -84,16 +84,18 @@ class Home extends React.Component {
 
   // delete note based on the note's id
   handleDeleteNote = (id) => {
-    const newNotesArray = this.state.notes.filter((note) => note.id !== id);
+    const updateNotesPostDelete = this.state.notes.filter(
+      (note) => note.id !== id
+    );
     this.setState({
-      notes: newNotesArray,
+      notes: updateNotesPostDelete,
     });
   };
 
   handleEditNote = (id, updatedTitle, updatedText) => {
     // pass a parameter in seState to ensure that the most up-to-date..
     this.setState((prevState) => {
-      const updatedNotes = prevState.notes.map((note) => {
+      const updateNotesPostEdit = prevState.notes.map((note) => {
         if (note.id === id) {
           return {
             ...note,
@@ -104,7 +106,7 @@ class Home extends React.Component {
         return note;
       });
       return {
-        notes: updatedNotes,
+        notes: updateNotesPostEdit,
       };
     });
   };
@@ -157,7 +159,7 @@ class Home extends React.Component {
             </button>
           </div>
           <Search handleSearch={this.handleSearch} />
-          <NoteList
+          <NotesList
             notes={notes.filter(
               (note) =>
                 note.title.toLowerCase().includes(search.toLowerCase()) ||
